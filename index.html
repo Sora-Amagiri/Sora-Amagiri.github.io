@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sora's Website</title>
+    <style>
+        @font-face {
+            font-family: "OPPO Sans";
+            src: url("OPPOSans-Regular.ttf") format("truetype");
+        }
+
+        :root {
+            --bg-color: #f5f5f5;
+            --bg-color-secondary: #fff;
+            --text-color: #333;
+            --border-color: #000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #222;
+                --bg-color-secondary: #333;
+                --text-color: #fff;
+                --border-color: #444;
+            }
+        }
+
+        body {
+            font-family: "OPPO Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(var(--bg-color-rgb), 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1em 0;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin: 0;
+            text-align: center;
+        }
+
+        .hero {
+            background-color: var(--bg-color-secondary);
+            border-radius: 0.5em;
+            padding: 2em;
+            box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 2em 0;
+        }
+
+        .hero h2 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1em;
+            margin: 2em 0;
+        }
+
+        .image-gallery img {
+            border-radius: 0.5em;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7em;
+            margin: 2em 0;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.4em 0.7em;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5em;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .contact a:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color-secondary);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @media screen and (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .hero h2 {
+                font-size: 1.2em;
+            }
+
+            .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header h1 {
+                font-size: 1.2em;
+            }
+
+            .hero {
+                padding: 1.5em;
+            }
+
+            .hero h2 {
+                font-size: 1em;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                flex-direction: column;
+            }
+
+            .contact a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Sora's Website</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero fade-in">
+            <h2>Just a Simple Website</h2>
+            <p>This is a website created with a single HTML file.</p>
+        </section>
+
+        <section class="content fade-in">
+            <p>
+                Exploring Teyvat and the Astral Express in Genshin Impact and Honkai Star Rail. 🎮<br>
+                I love to use OPPO, OnePlus, and Others. 📱
+            </p>
+            <p>I just added a sticky header for practice.</p>
+
+            <div class="image-gallery">
+                <img src="Cats.jpg" alt="Cute Kitties" loading="lazy">
+                <img src="Foxes.jpg" alt="Cute Little Foxes" loading="lazy">
+                <img src="Dogs.jpg" alt="Cute Puppies" loading="lazy">
+                <img src="Parrot.jpg" alt="Cute Parrot" loading="lazy">
+            </div>
+        </section>
+
+        <nav class="contact fade-in">
+            <a href="https://sora.github.io/firefox_only.html">Firefox?</a>
+            <a href="https://sora.github.io/calendar.html">Calendar</a>
+            <a href="https://sora.github.io/countdown.html">Countdown</a>
+            <a href="https://bsky.app/profile/sora-amagiri.bsky.social">Bluesky</a>
+            <a href="https://discord.com/invite/jnt7EFBrWE">Discord</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Sora Amagiri : You can use the design of my website, but please add my credit, like a URL and name.</p>
+        </div>
+    </footer>
+</body>
+</html>
