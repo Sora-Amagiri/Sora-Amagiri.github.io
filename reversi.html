@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reversi</title>
     <style>
+        @font-face {
+            font-family: "OPPO Sans";
+            src: url("OPPOSans-Regular.ttf") format("truetype");
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #222;
+                --bg-color-secondary: #333;
+                --text-color: #fff;
+                --border-color: #444;
+            }
+        }
+
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: "OPPO Sans", sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
+        
+        
         #game {
             text-align: center;
         }
