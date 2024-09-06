@@ -5,22 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Game</title>
     <style>
-        canvas {
-            border: 1px solid black;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #222;
+                --bg-color-secondary: #333;
+                --text-color: #fff;
+                --border-color: #444;
+            }
         }
-        #modeButton {
-            margin-top: 10px;
-            padding: 5px 10px;
+        
+        @font-face {
+            font-family: "OPPO Sans";
+            src: url("OPPOSans-Regular.ttf") format("truetype");
+        }
+        
+        
+        body {
+            font-family: "OPPO Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(var(--bg-color-rgb), 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1em 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #gameCanvas {
+            border: 2px solid #ffffff;
+            margin-top: 20px;
+        }
+        #instructions, #modeSwitch {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
             font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
-    <p>This game will not work properly on mobile devices. Please try it from your desktop.</p>
-    <p>Use ←→ to move. Spece or ↑ to jump.</p>
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
-    <br>
-    <button id="modeButton">Switch to Hard Mode</button>
+    <header class="header">
+        <div class="container">
+            <h1>Mini Game</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="instructions">
+            <p>This game will not work properly on mobile devices. Please try it from your desktop.</p>
+            <p>Use ←→ to move. Space or ↑ to jump.</p>
+        </div>
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <div id="modeSwitch">
+            <button id="modeButton" onclick="toggleMode()">Switch to Hard Mode</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Sora Amagiri : You can use the design of my website, but please add my credit, like a URL and name.</p>
+        </div>
+    </footer>
+
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -280,7 +372,7 @@
             }
         });
 
-        modeButton.addEventListener('click', () => {
+        function toggleMode() {
             if (gameMode === 'normal') {
                 gameMode = 'hard';
                 modeButton.textContent = 'Switch to Expert Mode';
@@ -304,15 +396,15 @@
                     numObstacles = 20;
                     minGap = 120;
                     goalClearance = 400;
-                    player.speed = 4;
-                    player.jumpStrength = 11;
+                    player.speed = 5;
+                    player.jumpStrength = 12;
                     break;
                 case 'expert':
                     numObstacles = 25;
                     minGap = 100;
                     goalClearance = 300;
-                    player.speed = 4;
-                    player.jumpStrength = 10;
+                    player.speed = 5;
+                    player.jumpStrength = 12;
                     break;
             }
 
@@ -320,7 +412,7 @@
             player.y = 200;
             camera.x = 0;
             generateObstacles();
-        });
+        }
 
         generateObstacles();
         gameLoop();
