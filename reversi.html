@@ -10,54 +10,99 @@
             src: url("OPPOSans-Regular.ttf") format("truetype");
         }
         
+        :root {
+            --bg-color: #f5f5f5;
+            --bg-color-secondary: #fff;
+            --text-color: #333;
+            --border-color: #000;
+            --board-color: #008000;
+            --cell-color: #228B22;
+        }
+        
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #222;
                 --bg-color-secondary: #333;
                 --text-color: #fff;
                 --border-color: #444;
+                --board-color: #006400;
+                --cell-color: #1C6E1C;
             }
         }
 
+        html {
+            font-size: 16px;
+        }
         
         body {
             font-family: "OPPO Sans", sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
+            font-size: 1rem;
         }
-        
         
         #game {
             text-align: center;
+            width: 90%;
+            max-width: 500px;
         }
+
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 0.5em;
+        }
+
         #board {
             display: inline-grid;
-            grid-template-columns: repeat(8, 50px);
-            grid-gap: 2px;
-            background-color: #008000;
-            padding: 10px;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 2px;
+            background-color: var(--board-color);
+            padding: 2%;
             border-radius: 5px;
+            aspect-ratio: 1 / 1;
+            width: 100%;
         }
+
         .cell {
-            width: 50px;
-            height: 50px;
-            background-color: #228B22;
+            aspect-ratio: 1 / 1;
+            background-color: var(--cell-color);
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .disc {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+        }
+
+        .black { background-color: black; }
+        .white { background-color: white; }
+
+        #status {
+            margin: 1em 0;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+        }
+
+        button {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            padding: 0.5em 1em;
+            margin-top: 1em;
+            background-color: var(--bg-color-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
             border-radius: 5px;
             cursor: pointer;
         }
-        .disc {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin: 5px;
-        }
-        .black { background-color: black; }
-        .white { background-color: white; }
     </style>
 </head>
 <body>
