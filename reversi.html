@@ -30,31 +30,44 @@
             }
         }
 
-        html {
-            font-size: 16px;
-        }
-        
         body {
             font-family: "OPPO Sans", sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
+            padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-size: 1rem;
-        }
-        
-        #game {
-            text-align: center;
-            width: 90%;
-            max-width: 500px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            line-height: 1.6;
+            font-size: 16px;
         }
 
-        h1 {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(var(--bg-color-rgb), 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1em 0;
+        }
+
+        .header h1 {
             font-size: clamp(1.5rem, 5vw, 2.5rem);
-            margin-bottom: 0.5em;
+            margin: 0;
+            text-align: center;
+        }
+
+        #game {
+            text-align: center;
+            margin: 2em auto;
+            max-width: 500px;
         }
 
         #board {
@@ -103,15 +116,51 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .footer {
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+            border-top: 1px solid var(--border-color);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
     </style>
 </head>
 <body>
-    <div id="game">
-        <h1>Reversi</h1>
-        <div id="board"></div>
-        <p id="status"></p>
-        <button onclick="resetGame()">Reset Game</button>
-    </div>
+    <header class="header">
+        <div class="container">
+            <h1>Reversi</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="game" class="fade-in">
+            <div id="board"></div>
+            <p id="status"></p>
+            <button onclick="resetGame()">Reset Game</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Sora Amagiri : You can use the design of my website, but please add my credit, like a URL and name.</p>
+        </div>
+    </footer>
 
     <script>
         const EMPTY = 0, BLACK = 1, WHITE = 2;
